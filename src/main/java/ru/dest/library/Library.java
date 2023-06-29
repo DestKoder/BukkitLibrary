@@ -43,7 +43,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-@Plugin(id = "dblib", prefix = "DBukkitLibrary")
+@Plugin(id = "dblib", prefix = "DBukkitLibrary", resource = 110847)
 public final class Library extends BukkitPlugin<Library> implements Listener {
 
     private static final List<BukkitPlugin<?>> plugins = new ArrayList<>();

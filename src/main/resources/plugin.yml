@@ -1,8 +1,9 @@
 name: '${project.artifactId}'
 version: '${project.version}'
-main: ru.dest.destbukkitlibrary.Library
+main: ru.dest.library.Library
 prefix: DBL
 softdepend: [PlaceholderAPI]
 authors: [DestKoder]
 description: Library for DestKoder's plugins
 website: https://github.com/DestKoder/DestBukkitLibrary
+api-version: 1.16

@@ -6,9 +6,8 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import ru.dest.library.loging.ConsoleLogger;
 import ru.dest.library.object.CommandRegistry;
+import ru.dest.library.utils.SpigotmcUpdater;
 import ru.dest.library.utils.TimeUtils;
-
-import java.io.File;
 
 public abstract class BukkitPlugin<T extends JavaPlugin> extends JavaPlugin {
 
@@ -23,8 +22,9 @@ public abstract class BukkitPlugin<T extends JavaPlugin> extends JavaPlugin {
         I();
         logger = new ConsoleLogger(prefix.isEmpty() ? getName() : prefix, true);
         this.pluginManager = getServer().getPluginManager();
-        long time = TimeUtils.getCurrentUnixTime();
+        C();
 
+        long time = TimeUtils.getCurrentUnixTime();
         logger.info(ConsoleLogger.CYAN + "==========[ " +ConsoleLogger.GREEN + getName() + " by " + getDescription().getAuthors().get(0) + ConsoleLogger.CYAN + " ]==========");
         try {
             this.registry = new CommandRegistry<>(this);
@@ -50,6 +50,7 @@ public abstract class BukkitPlugin<T extends JavaPlugin> extends JavaPlugin {
     public Permission[] getPermissions(){return new Permission[0];}
     public Listener[] getHandlers() {return new Listener[0];};
 
+    protected boolean enableVersionChecker(){return true;}
     private void I() {
         Plugin annotation = getClass().getDeclaredAnnotation(Plugin.class);
         if(annotation == null) throw new IllegalStateException("BukkitPlugin must have Plugin annotation!");
@@ -57,5 +58,14 @@ public abstract class BukkitPlugin<T extends JavaPlugin> extends JavaPlugin {
         this.id = annotation.id();
         this.prefix = annotation.prefix();
         this.resource = annotation.resource();
+    }
+    private void C() {
+        if(resource != -1 && enableVersionChecker()){
+            if(new SpigotmcUpdater(this, resource).hasUpdates()){
+                logger.warning("Update available for plugin " + getName());
+            }else {
+                logger.info("You have actual version of this plugin");
+            }
+        }
     }
 }
