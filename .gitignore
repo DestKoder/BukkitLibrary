@@ -1,6 +1,7 @@
 target/*
 .idea/*
-ru/dest/library/command/manager/SimpleSub.java
-ru/dest/library/Library
+src/main/java/ru/dest/library/command/manager/SimpleSub.java
+src/main/java/ru/dest/library/Library
 resources/
 pom.xml
+src/main/java/ru/dest/library/nms/v*
