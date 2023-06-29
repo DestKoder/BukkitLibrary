@@ -1,0 +1,126 @@
+@options
+@packages
+@argfile
+-classpath
+'C:/Users/User/.m2/repository/org/spigotmc/spigot-api/1.12.2/spigot-api-1.12.2.jar;C:/Users/User/.m2/repository/nms/NMS/1.12-1.16/NMS-1.12-1.16.jar;C:/Users/User/.m2/repository/me/clip/placeholderapi/2.11.2/placeholderapi-2.11.2.jar;C:/Users/User/.m2/repository/org/jetbrains/annotations/19.0.0/annotations-19.0.0.jar;C:/Users/User/.m2/repository/ru/dest/DestLibraryCore/1.0/DestLibraryCore-1.0.jar'
+-encoding
+'UTF-8'
+-protected
+-sourcepath
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java;D:/Programming/java-workspace/DestBukkitLibrary/target/generated-sources/annotations'
+-author
+-bottom
+'Copyright &#169; 2023. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'D:/Programming/java-workspace/DestBukkitLibrary/target/classes/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'DestBukkitLibrary 2.0 API'
+-linkoffline
+'https://docs.oracle.com/javase/8/docs/api' 'D:/Programming/java-workspace/DestBukkitLibrary/target/javadoc-bundle-options'
+-use
+-version
+-windowtitle
+'DestBukkitLibrary 2.0 API'
+ru.dest.library.command
+ru.dest.library.command.annotation
+ru.dest.library.command.manager
+ru.dest.library.config
+ru.dest.library.cooldown
+ru.dest.library.event
+ru.dest.library.exception
+ru.dest.library.gui
+ru.dest.library.items
+ru.dest.library.items.i
+ru.dest.library.lang
+ru.dest.library
+ru.dest.library.nms
+ru.dest.library.nms.v1_12_R1
+ru.dest.library.nms.v1_16_R3
+ru.dest.library.object
+ru.dest.library.plugin
+ru.dest.library.task
+ru.dest.library.utils
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/command/AbstractCommand.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/command/annotation/CommandArgs.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/command/annotation/Permission.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/command/CommandData.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/command/ConfigCommand.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/command/ICommand.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/command/manager/AbstractManagerCommand.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/command/manager/BaseManagerCommand.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/command/manager/ManagerCommand.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/command/manager/SimpleSub.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/command/PlayerOnlyCommand.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/config/Config.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/cooldown/CooldownData.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/cooldown/Cooldowns.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/cooldown/StoredCooldowns.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/event/PlayerItemInteractEvent.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/event/PlayerLocationChangeEvent.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/exception/CommandNotFoundException.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/exception/IntegrationInitException.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/exception/InvalidItemDataException.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/exception/InvalidLeatherArmorTypeException.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/exception/InvalidMaterialException.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/exception/MissingConfigurationException.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/exception/RegistratorInitException.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/exception/SubCommandExistsException.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/exception/UnsupportedDatabaseException.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/gui/GUI.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/gui/GUIContainer.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/gui/GUITemplate.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/gui/ObjectListGUI.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/items/CustomItem.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/items/i/IBow.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/items/i/IConsumeableItem.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/items/i/IInteractItem.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/items/i/ISword.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/items/ItemId.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/items/ItemRegistry.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/lang/JsonLang.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/lang/Lang.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/lang/YamlLang.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/Library.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/nms/NMS.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/nms/TagUtils.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/nms/v1_12_R1/TagUtils.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/nms/v1_16_R3/TagUtils.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/object/AdvancedMessage.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/object/ArgCondition.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/object/CommandRegistry.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/object/IItem.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/object/Message.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/object/Pair.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/object/Title.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/plugin/BukkitPlugin.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/plugin/Plugin.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/task/TaskManager.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/utils/ChatUtils.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/utils/ConfigUtils.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/utils/ItemUtils.java'
+'D:/Programming/java-workspace/DestBukkitLibrary/src/main/java/ru/dest/library/utils/PlayerUtils.java'
+C:\Users\User\.m2\repository\org\spigotmc\spigot-api\1.12.2\spigot-api-1.12.2.jar = 1670761802561
+C:\Users\User\.m2\repository\nms\NMS\1.12-1.16\NMS-1.12-1.16.jar = 1685616186975
+C:\Users\User\.m2\repository\me\clip\placeholderapi\2.11.2\placeholderapi-2.11.2.jar = 1671711101791
+C:\Users\User\.m2\repository\org\jetbrains\annotations\19.0.0\annotations-19.0.0.jar = 1666978092961
+C:\Users\User\.m2\repository\ru\dest\DestLibraryCore\1.0\DestLibraryCore-1.0.jar = 1687969701977
+D:\Programming\java-workspace\DestBukkitLibrary\src\main\java = 1687969449982
+D:\Programming\java-workspace\DestBukkitLibrary\target\generated-sources\annotations = 1688037487799
+D:\Programming\java-workspace\DestBukkitLibrary\target\classes\apidocs\allclasses-frame.html = 1688037498702
+D:\Programming\java-workspace\DestBukkitLibrary\target\classes\apidocs\allclasses-noframe.html = 1688037498704
+D:\Programming\java-workspace\DestBukkitLibrary\target\classes\apidocs\constant-values.html = 1688037497922
+D:\Programming\java-workspace\DestBukkitLibrary\target\classes\apidocs\deprecated-list.html = 1688037498698
+D:\Programming\java-workspace\DestBukkitLibrary\target\classes\apidocs\help-doc.html = 1688037498711
+D:\Programming\java-workspace\DestBukkitLibrary\target\classes\apidocs\index-all.html = 1688037498693
+D:\Programming\java-workspace\DestBukkitLibrary\target\classes\apidocs\index.html = 1688037498706
+D:\Programming\java-workspace\DestBukkitLibrary\target\classes\apidocs\overview-frame.html = 1688037497764
+D:\Programming\java-workspace\DestBukkitLibrary\target\classes\apidocs\overview-summary.html = 1688037498708
+D:\Programming\java-workspace\DestBukkitLibrary\target\classes\apidocs\overview-tree.html = 1688037498659
+D:\Programming\java-workspace\DestBukkitLibrary\target\classes\apidocs\package-list = 1688037497760
+D:\Programming\java-workspace\DestBukkitLibrary\target\classes\apidocs\script.js = 1688037498714
+D:\Programming\java-workspace\DestBukkitLibrary\target\classes\apidocs\serialized-form.html = 1688037497936
+D:\Programming\java-workspace\DestBukkitLibrary\target\classes\apidocs\stylesheet.css = 1688037498713

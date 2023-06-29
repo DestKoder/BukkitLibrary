@@ -1,0 +1,6 @@
+target/*
+.idea/*
+ru/dest/library/command/manager/SimpleSub.java
+ru/dest/library/Library
+resources/
+pom.xml

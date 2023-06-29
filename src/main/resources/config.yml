@@ -1,0 +1,11 @@
+
+message:
+  playernotfound: "&6&lFast&e&lRise &8>> &cУказанный игрок никогда не заходил на сервер"
+  playernotonline: "&6&lFast&e&lRise &8>> &cУказанный игрок не в сети"
+  nopermission: "&6&lFast&e&lRise &8>> &cУ вас недостаточно прав."
+  playeronly: "&6&lFast&e&lRise &8>> &cДанная команда доступна только для игроков."
+  argument:
+    int: "&6&lFast&e&lRise &8>> &c{i} аргумент должен быть целым числом"
+    bool: "&6&lFast&e&lRise &8>> &c{i} аргумент может принимать только значения true/false"
+    double: "&6&lFast&e&lRise &8>> &c{i} аргумент должен быть числом с плавающей точкой, например 1.0 5.214"
+    time: "&6&lFast&e&lRise &8>> &c{i} аргумент должен быть указанием времени. Например 1s, 1m, 1h, 1d, 1w, 1M, 1y"

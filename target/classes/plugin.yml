@@ -1,0 +1,8 @@
+name: 'DestBukkitLibrary'
+version: '2.0'
+main: ru.dest.destbukkitlibrary.Library
+prefix: DBL
+softdepend: [PlaceholderAPI]
+authors: [DestKoder]
+description: Library for DestKoder's plugins
+website: https://github.com/DestKoder/DestBukkitLibrary
