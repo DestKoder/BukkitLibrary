@@ -2,7 +2,7 @@ name: '${project.artifactId}'
 version: '${project.version}'
 main: ru.dest.library.Library
 prefix: DBL
-softdepend: [PlaceholderAPI]
+softdepend: [PlaceholderAPI, TAB]
 authors: [DestKoder]
 description: Library for DestKoder's plugins
 website: https://github.com/DestKoder/DestBukkitLibrary

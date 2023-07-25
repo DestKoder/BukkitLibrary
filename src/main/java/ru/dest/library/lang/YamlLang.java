@@ -24,7 +24,7 @@ public class YamlLang implements Lang{
     @Override
     @NotNull
     public String getRawString(String key) {
-        if(!cfg.isSet(key) || cfg.isConfigurationSection(key)) return "NULL";
+        if(!cfg.isSet(key) || cfg.isConfigurationSection(key)) return key;
         if(!cfg.isList(key)) {
             return ChatUtils.parse(cfg.getString(key));
         }

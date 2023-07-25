@@ -4,6 +4,7 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import ru.dest.library.Library;
+import ru.dest.library.object.RegistryKey;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,7 +12,7 @@ import java.util.Map;
 public class ItemRegistry {
     private static ItemRegistry instance;
 
-    private final Map<ItemId, CustomItem> itemMap;
+    private final Map<RegistryKey, CustomItem> itemMap;
 
     public ItemRegistry(){
         itemMap = new HashMap<>();
@@ -27,22 +28,22 @@ public class ItemRegistry {
         this.itemMap.put(item.getKey(), item);
     }
 
-    public void unregister(ItemId key){
+    public void unregister(RegistryKey key){
         this.itemMap.remove(key);
     }
 
     @Deprecated
     public void unregister(@NotNull NamespacedKey key){
-        this.itemMap.remove(ItemId.fromString(key.toString()));
+        this.itemMap.remove(RegistryKey.fromString(key.toString()));
     }
 
-    public CustomItem getItem(ItemId key) {
+    public CustomItem getItem(RegistryKey key) {
         return itemMap.get(key);
     }
 
     @Deprecated
     public CustomItem getItem(@NotNull NamespacedKey key){
-        return itemMap.get(ItemId.fromString(key.toString()));
+        return itemMap.get(RegistryKey.fromString(key.toString()));
     }
 
     public CustomItem getItem(@NotNull ItemStack item){
@@ -50,7 +51,7 @@ public class ItemRegistry {
 
         if(itemId == null) return null;
 
-        return getItem(ItemId.fromString(itemId));
+        return getItem(RegistryKey.fromString(itemId));
     }
 
     public boolean isCustomItem(ItemStack item){

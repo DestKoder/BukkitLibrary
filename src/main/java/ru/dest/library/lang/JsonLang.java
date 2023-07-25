@@ -21,16 +21,15 @@ public class JsonLang implements Lang{
     private final Map<String, String> data;
     private final String prefix;
 
-    private JsonLang(Map<String, String> data){
+    private JsonLang(@NotNull Map<String, String> data){
         this.data = data;
         this.prefix = data.getOrDefault("prefix", "");
-
     }
 
     @Override
     @NotNull
     public String getRawString(String key) {
-        return ChatUtils.parse( data.getOrDefault(key, "NULL"));
+        return ChatUtils.parse( data.getOrDefault(key, key));
     }
 
     @Override

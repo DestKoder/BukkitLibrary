@@ -64,4 +64,13 @@ public class TagUtils implements ru.dest.library.nms.TagUtils {
         if(nbt == null) return null;
         return nbt.getDouble(key);
     }
+
+    @Override
+    public boolean hasTag(ItemStack item, String key) {
+        net.minecraft.server.v1_12_R1.ItemStack i = CraftItemStack.asNMSCopy(item);
+        NBTTagCompound nbt = i.getTag();
+        if(nbt == null) return false;
+
+        return nbt.hasKey(key);
+    }
 }

@@ -4,6 +4,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.permissions.Permission;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import ru.dest.library.Library;
 import ru.dest.library.loging.ConsoleLogger;
 import ru.dest.library.object.CommandRegistry;
 import ru.dest.library.utils.SpigotmcUpdater;
@@ -58,6 +59,7 @@ public abstract class BukkitPlugin<T extends JavaPlugin> extends JavaPlugin {
         this.id = annotation.id();
         this.prefix = annotation.prefix();
         this.resource = annotation.resource();
+        Library.r(this);
     }
     private void C() {
         if(resource != -1 && enableVersionChecker()){

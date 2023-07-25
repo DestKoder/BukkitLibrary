@@ -1,5 +1,6 @@
 package ru.dest.library.nms;
 
+import org.bukkit.entity.Entity;
 import org.bukkit.inventory.ItemStack;
 
 public interface TagUtils {
@@ -12,4 +13,5 @@ public interface TagUtils {
     Integer getIntegerTagValue(ItemStack item, String key);
     Double getDoubleTagValue(ItemStack item, String key);
 
+    boolean hasTag(ItemStack item, String key);
 }

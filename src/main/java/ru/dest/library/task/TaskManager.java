@@ -139,7 +139,6 @@ public class TaskManager {
         callLater(id, plugin, delay, false, r);
     }
 
-
     public void cancel(String id){
         if(!tasks.containsKey(id)) return;
 

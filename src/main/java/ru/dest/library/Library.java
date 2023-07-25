@@ -28,13 +28,14 @@ import ru.dest.library.gui.GUI;
 import ru.dest.library.items.CustomItem;
 import ru.dest.library.items.ItemRegistry;
 import ru.dest.library.items.i.*;
-import ru.dest.library.loging.ConsoleLogger;
 import ru.dest.library.nms.NMS;
 import ru.dest.library.nms.TagUtils;
 import ru.dest.library.object.CommandRegistry;
 import ru.dest.library.object.Message;
 import ru.dest.library.plugin.BukkitPlugin;
 import ru.dest.library.plugin.Plugin;
+import ru.dest.library.scoreboard.ScoreboardService;
+import ru.dest.library.scoreboard.TabScoreboard;
 import ru.dest.library.task.TaskManager;
 import ru.dest.library.utils.ChatUtils;
 import ru.dest.library.utils.ItemUtils;
@@ -49,13 +50,14 @@ public final class Library extends BukkitPlugin<Library> implements Listener {
     private static final List<BukkitPlugin<?>> plugins = new ArrayList<>();
 
     private static Library i;
-    private ConsoleLogger logger;
 
     private TaskManager tM;
     private TagUtils nmsTagUtils;
     private ItemStack skull;
 
     private Message playerOnlyMessage, noPermissionMessage, playerNotFoundMessage, playernotonline;
+
+    private ScoreboardService<?> scoreboardService;
 
     @Permission(permission = "dbl.reload")
     class ReloadCommand extends AbstractCommand<Library> {
@@ -87,51 +89,6 @@ public final class Library extends BukkitPlugin<Library> implements Listener {
     }
 
     @Override
-    public void onEnable() {
-        i = this;
-
-        ConsoleLogger logger = new ConsoleLogger(getName(), false);
-        tM = TaskManager.get();
-
-
-        String version = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
-
-        try {
-            NMS nms = NMS.valueOf(version);
-            this.nmsTagUtils = nms.createTagUtils();
-            this.skull = ItemUtils.createByMaterial(nms.getHeadMaterial());
-            logger.info("Detected server version " + version + ". Tag api activated");
-        }catch (IllegalArgumentException e){
-            logger.warning("Detected server version " + version + " isn't supported. Tag api deactivated.");
-        }
-
-        this.noPermissionMessage = new Message(getConfig().getString("message.nopermission"));
-        this.playerNotFoundMessage = new Message(getConfig().getString("message.playernotfound"));
-        this.playerOnlyMessage = new Message(getConfig().getString("message.playeronly"));
-        this.playernotonline = new Message(getConfig().getString("message.playernotonline"));
-
-        @Permission(permission = "dbl.reload")
-        class ReloadCommand extends AbstractCommand<Library> {
-            public ReloadCommand(Library plugin, String name, String usage) {
-                super(plugin, name, usage);
-            }
-
-            @Override
-            public void perform(CommandSender sender, CommandData data, String[] args) {
-                if(!sender.hasPermission("dbl.reload")) {
-                    plugin.getNoPermissionMessage().send(sender);
-                    return;
-                }
-                plugin.reloadConfig();
-                noPermissionMessage = new Message(getConfig().getString("message.nopermission"));
-                playerNotFoundMessage = new Message(getConfig().getString("message.playernotfound"));
-                playerOnlyMessage = new Message(getConfig().getString("message.playeronly"));
-                playernotonline = new Message(getConfig().getString("message.playernotonline"));
-            }
-        }
-    }
-
-    @Override
     public void enable() {
         i = this;
         tM = TaskManager.get();
@@ -151,9 +108,14 @@ public final class Library extends BukkitPlugin<Library> implements Listener {
         this.playerNotFoundMessage = new Message(getConfig().getString("message.playernotfound"));
         this.playerOnlyMessage = new Message(getConfig().getString("message.playeronly"));
         this.playernotonline = new Message(getConfig().getString("message.playernotonline"));
+
+        if(getServer().getPluginManager().isPluginEnabled("TAB")){
+            logger.info("Found TAB plugin by NEZNAMY. Scoreboard support enabled");
+            this.scoreboardService = new TabScoreboard();
+        }else {
+            logger.warning("For Scoreboard support please install TAB plugin");
+        }
     }
-
-
 
     @Override
     public void regCommands(@NotNull CommandRegistry<Library> registry) {
@@ -206,6 +168,10 @@ public final class Library extends BukkitPlugin<Library> implements Listener {
     @Contract("_ -> new")
     public @NotNull Message getInvalidArgumentMessage(String needed) {
         return new Message(getConfig().getString("message.argument."+needed));
+    }
+
+    public ScoreboardService<?> getScoreboardService() {
+        return scoreboardService;
     }
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
