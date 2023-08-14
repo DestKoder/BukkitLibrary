@@ -23,6 +23,7 @@ import org.jetbrains.annotations.Nullable;
 import ru.dest.library.command.AbstractCommand;
 import ru.dest.library.command.CommandData;
 import ru.dest.library.command.annotation.Permission;
+import ru.dest.library.database.settings.ConnectionSettings;
 import ru.dest.library.event.*;
 import ru.dest.library.gui.GUI;
 import ru.dest.library.items.CustomItem;
@@ -32,6 +33,7 @@ import ru.dest.library.nms.NMS;
 import ru.dest.library.nms.TagUtils;
 import ru.dest.library.object.CommandRegistry;
 import ru.dest.library.object.Message;
+import ru.dest.library.object.db.Loader;
 import ru.dest.library.plugin.BukkitPlugin;
 import ru.dest.library.plugin.Plugin;
 import ru.dest.library.scoreboard.ScoreboardService;
@@ -115,6 +117,10 @@ public final class Library extends BukkitPlugin<Library> implements Listener {
         }else {
             logger.warning("For Scoreboard support please install TAB plugin");
         }
+
+        Loader l = new Loader();
+        ConnectionSettings.Loader.rl(".yml",l);
+        ConnectionSettings.Loader.rl(".yaml",l);
     }
 
     @Override

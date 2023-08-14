@@ -24,6 +24,6 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: me.clip:placeholderapi:2.11.2" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.jetbrains:annotations:19.0.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: me.neznamy:tab-api:4.0.0" level="project" />
-    <orderEntry type="library" name="Maven: ru.dest:DestLibraryCore:1.0" level="project" />
+    <orderEntry type="library" name="Maven: ru.dest:DataBaseAPI:1.1.1" level="project" />
   </component>
 </module>

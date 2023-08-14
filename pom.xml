@@ -6,7 +6,7 @@
 
     <groupId>ru.dest</groupId>
     <artifactId>DestBukkitLibrary</artifactId>
-    <version>2.1</version>
+    <version>2.1.2</version>
     <packaging>jar</packaging>
 
     <name>DestBukkitLibrary</name>
@@ -114,8 +114,8 @@
 
         <dependency>
             <groupId>ru.dest</groupId>
-            <artifactId>DestLibraryCore</artifactId>
-            <version>1.0</version>
+            <artifactId>DataBaseAPI</artifactId>
+            <version>1.1.1</version>
         </dependency>
     </dependencies>
 </project>
