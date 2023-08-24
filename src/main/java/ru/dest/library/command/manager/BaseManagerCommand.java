@@ -18,7 +18,6 @@ import java.util.Objects;
 public class BaseManagerCommand<T extends JavaPlugin> extends AbstractCommand<T> implements ManagerCommand<T> {
 
     private final List<ICommand<T>> subCommands = new ArrayList<>();
-
     public BaseManagerCommand(T plugin, String name, String usage) {
         super(plugin, name, usage);
     }
@@ -59,8 +58,12 @@ public class BaseManagerCommand<T extends JavaPlugin> extends AbstractCommand<T>
 
     }
 
+    protected void __default(@NotNull CommandSender sender, CommandData data, String[] args) {
+        sender.sendMessage(this.usageMessage);
+    }
+
     @Override
-    public void addSubCommand(ICommand<T> cmd) {
+    public void addSubCommand(@NotNull ICommand<T> cmd) {
         for(String s : cmd.getAliases()){
             if(getCommandByName(s) != null) {
                 throw new SubCommandExistsException(s);
@@ -77,17 +80,18 @@ public class BaseManagerCommand<T extends JavaPlugin> extends AbstractCommand<T>
             return;
         }
 
-        ICommand<T> sub = getCommandByName(args[0]);
-
-        if(sub == null) {
-            data.getSender().sendMessage(this.usageMessage);
-            return;
-        }
         String[] arguments = new String[args.length -1];
 
         System.arraycopy(args, 1, arguments, 0, args.length - 1);
 
         CommandData cd = new CommandData(arguments, data.getSender(), this, args[0]);
+
+        ICommand<T> sub = getCommandByName(args[0]);
+
+        if(sub == null) {
+            __default(sender, cd, cd.getArgs());
+            return;
+        }
 
         sub.perform(sender, cd, cd.getArgs());
     }

@@ -8,7 +8,6 @@ import org.jetbrains.annotations.NotNull;
 import java.util.UUID;
 
 public class PlayerUtils {
-
     public String getIp(@NotNull Player player){
         return player.getAddress().getAddress().getHostAddress();
     }

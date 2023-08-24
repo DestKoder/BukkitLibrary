@@ -49,13 +49,13 @@ public class ItemRegistry {
     public CustomItem getItem(@NotNull ItemStack item){
         String itemId = Library.getInstance().getNmsTagUtils().getStringTagValue(item, "itemid");
 
-        if(itemId == null) return null;
+        if(itemId == null || itemId.isEmpty()) return null;
 
         return getItem(RegistryKey.fromString(itemId));
     }
 
     public boolean isCustomItem(ItemStack item){
         String itemId = Library.getInstance().getNmsTagUtils().getStringTagValue(item, "itemid");
-        return itemId != null;
+        return itemId != null && !itemId.isEmpty();
     }
 }

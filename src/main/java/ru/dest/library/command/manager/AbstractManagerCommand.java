@@ -15,10 +15,12 @@ public abstract class AbstractManagerCommand<T extends JavaPlugin> extends BaseM
 
     public AbstractManagerCommand(T plugin, String name, String usage) {
         super(plugin, name, usage);
+        this.registerCommands();
     }
 
     public AbstractManagerCommand(T plugin, String name, String usage, List<String> aliases) {
         super(plugin, name, usage, aliases);
+        this.registerCommands();
     }
 
     public AbstractManagerCommand(T plugin, @NotNull String name, @NotNull String description, @NotNull String usageMessage, @NotNull List<String> aliases) {
