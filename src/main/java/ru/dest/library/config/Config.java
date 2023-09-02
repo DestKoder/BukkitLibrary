@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 import java.io.File;
 import java.io.IOException;
 
-public class Config<T extends Plugin> extends YamlConfiguration {
+public abstract class Config<T extends Plugin> extends YamlConfiguration {
 
     protected final T plugin;
     protected final File data;
@@ -34,10 +34,10 @@ public class Config<T extends Plugin> extends YamlConfiguration {
             plugin.getLogger().warning(e.getMessage());
             e.printStackTrace();
         }
-        this.afterLoad();
+        this.reload();
     }
 
-    public void afterLoad(){}
+    public abstract void reload();
 
     public final void save(){
         try {

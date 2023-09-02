@@ -2,7 +2,6 @@ package ru.dest.library.scoreboard;
 
 import me.neznamy.tab.api.TabAPI;
 import me.neznamy.tab.api.scoreboard.Scoreboard;
-import org.bukkit.Server;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import ru.dest.library.utils.TimeUtils;
@@ -14,7 +13,6 @@ import java.util.Map;
 public class TabScoreboard extends ScoreboardService<TabAPI>{
 
     private final Map<String, Scoreboard> registeredBoards = new HashMap<>();
-
     public TabScoreboard() {
         super(TabAPI.getInstance());
     }

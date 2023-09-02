@@ -9,8 +9,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
 import ru.dest.library.Library;
 import ru.dest.library.exception.MissingConfigurationException;
-
-
 public class ConfigUtils {
     /**
      * Save location to {@link ConfigurationSection}
