@@ -4,6 +4,7 @@ import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.block.Skull;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
@@ -28,10 +29,6 @@ public class ItemUtils {
     @Contract("_ -> new")
     @NotNull
     public static ItemStack createByMaterial(@NotNull String material){
-        if(material.startsWith("head:")) {
-            return Objects.requireNonNull(createHead(material.replace("head:", "")));
-        }
-
         material = material.toUpperCase();
         if(!material.contains(":")) {
             Material mat = Material.getMaterial(material);
@@ -54,17 +51,35 @@ public class ItemUtils {
         }
 
         if(data.length == 3) {
-            return new ItemStack(mat,Parser.parseInt(data[1]), Short.parseShort(data[2]));
+            return new ItemStack(mat, Integer.parseInt(data[1]), Short.parseShort(data[2]));
         }
 
-        return new ItemStack(mat, Parser.parseInt(data[1]));
+        return new ItemStack(mat, Integer.parseInt(data[1]));
     }
 
-    @Nullable
+    /**
+     * Creates head with texture id;
+     * @param textureId texture id from minecraft-heads.com
+     * @see {@link ItemUtils#setHeadTexture}
+     * @return head item with provided texture or without it if any exception occupied
+     */
+    @Deprecated
     public static ItemStack createHead(String textureId) {
         ItemStack head = Library.getInstance().getSkullItem();
         assert head != null;
-        SkullMeta headMeta = (SkullMeta) head.getItemMeta();
+        return setHeadTexture(head, textureId);
+    }
+
+    /**
+     * Setup custom head texture for head item
+     * @param item player head item
+     * @param textureId texture from minecraft-heads.com
+     * @return if no exceptions occupied - item with texture or provided item in other cases
+     */
+    @NotNull
+    public static ItemStack setHeadTexture(@NotNull ItemStack item, @NotNull String textureId){
+        if(!(item.getItemMeta() instanceof SkullMeta)) throw new IllegalArgumentException("Item must be a Skull Item.");
+        SkullMeta headMeta = (SkullMeta) item.getItemMeta();
 
         GameProfile profile = new GameProfile(UUID.randomUUID(), null);
 
@@ -75,13 +90,13 @@ public class ItemUtils {
             profileField.setAccessible(true);
             profileField.set(headMeta, profile);
 
-            head.setItemMeta(headMeta);
-            return head;
+            item.setItemMeta(headMeta);
         }catch (NoSuchFieldException | IllegalAccessException e) {
             e.printStackTrace();
-            return null;
         }
+        return item;
     }
+
     @NotNull
     public static ItemStack createHead(OfflinePlayer player){
         ItemStack head = Library.getInstance().getSkullItem();

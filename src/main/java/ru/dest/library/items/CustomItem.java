@@ -17,7 +17,7 @@ public class CustomItem implements IItem {
     public CustomItem(@NotNull RegistryKey key, @NotNull ItemStack bukkitItem) {
         this.key = key;
 
-        this.bukkitItem =  Library.getInstance().getNmsTagUtils().setStringTag(bukkitItem, "itemid", this.key.toString());
+        this.bukkitItem =  Library.getInstance().getNmsTagUtils().setStringTag(bukkitItem, Library.i().getItemId(), this.key.toString());
 
         ItemRegistry.get().register(this);
     }
@@ -41,8 +41,7 @@ public class CustomItem implements IItem {
     @Deprecated
     public CustomItem(@NotNull NamespacedKey key, @NotNull ItemStack bukkitItem) {
         this.key = RegistryKey.fromString(key.toString());
-
-        this.bukkitItem =  Library.getInstance().getNmsTagUtils().setStringTag(bukkitItem, "itemid", this.key.toString());;
+        this.bukkitItem =  Library.getInstance().getNmsTagUtils().setStringTag(bukkitItem, Library.i().getItemId(), this.key.toString());;
     }
 
     public RegistryKey getKey() {

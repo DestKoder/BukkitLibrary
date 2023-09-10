@@ -6,7 +6,10 @@ import java.lang.reflect.InvocationTargetException;
 
 public enum NMS {
     v1_12_R1("ru.dest.library.nms.v1_12_R1.TagUtils", "SKULL:1:3"),
-    v1_16_R3("ru.dest.library.nms.v1_16_R3.TagUtils", "PLAYER_HEAD")
+    v1_14_R1("ru.dest.library.nms.v1_14_MORE.TagUtils", "PLAYER_HEAD"),
+    v1_14_R2("ru.dest.library.nms.v1_14_MORE.TagUtils", "PLAYER_HEAD"),
+    v1_16_R3("ru.dest.library.nms.v1_14_MORE.TagUtils", "PLAYER_HEAD"),
+    v1_17_R1("ru.dest.library.nms.v1_14_MORE.TagUtils", "PLAYER_HEAD"),
     ;
 
     private final String tagUtilsClass;

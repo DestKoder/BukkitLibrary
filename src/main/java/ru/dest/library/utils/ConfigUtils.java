@@ -6,6 +6,7 @@ import org.bukkit.World;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.SkullMeta;
 import org.jetbrains.annotations.NotNull;
 import ru.dest.library.Library;
 import ru.dest.library.exception.MissingConfigurationException;
@@ -69,11 +70,7 @@ public class ConfigUtils {
             if(item.contains(":")){
                 String[] data = item.split(":", 1);
                 if(data.length > 1){
-//                    if(!data[0].equalsIgnoreCase("minecraft")){
-//                        return ItemRegistry.get().getItem(NamespacedKey.fromString(item)).asBukkitItem();
-//                    }else{
                     section.set("material", data[1]);
-                    //}
                 }
             }
         }
@@ -94,8 +91,14 @@ public class ConfigUtils {
 
         item.setItemMeta(meta);
 
+        if(meta instanceof SkullMeta && section.isSet("texture") && section.isString("texture")) {
+            ItemUtils.setHeadTexture(item, section.getString("texture"));
+        }
+
         if(section.isSet("amount")) item.setAmount(section.getInt("amount"));
-        if(section.isSet("enchantments") && section.isConfigurationSection("enchantments")) item = ItemUtils.applyEnchantments(item, section.getConfigurationSection("enchantments"));
+        if(section.isSet("enchantments") && section.isConfigurationSection("enchantments")) {
+            ItemUtils.applyEnchantments(item, section.getConfigurationSection("enchantments"));
+        }
 
         return item;
     }

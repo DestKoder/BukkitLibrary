@@ -47,7 +47,7 @@ public class ItemRegistry {
     }
 
     public CustomItem getItem(@NotNull ItemStack item){
-        String itemId = Library.getInstance().getNmsTagUtils().getStringTagValue(item, "itemid");
+        String itemId = Library.getInstance().getNmsTagUtils().getStringTagValue(item, Library.i().getItemId());
 
         if(itemId == null || itemId.isEmpty()) return null;
 
@@ -55,7 +55,7 @@ public class ItemRegistry {
     }
 
     public boolean isCustomItem(ItemStack item){
-        String itemId = Library.getInstance().getNmsTagUtils().getStringTagValue(item, "itemid");
+        String itemId = Library.getInstance().getNmsTagUtils().getStringTagValue(item, Library.i().getItemId());
         return itemId != null && !itemId.isEmpty();
     }
 }

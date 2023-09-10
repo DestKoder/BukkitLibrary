@@ -55,6 +55,8 @@ public abstract class AbstractCommand<T extends JavaPlugin> extends Command impl
                 argsConditions.put(i, new ArgCondition(s, str -> str.matches(Patterns.BOOLEAN.pattern())));
             }else if(s.equalsIgnoreCase("time")){
                 argsConditions.put(i, new ArgCondition(s, str -> str.matches(Patterns.TIME_UNIT.pattern())));
+            }else if(s.equalsIgnoreCase("ip")){
+                argsConditions.put(i, new ArgCondition(s, str -> str.matches(Patterns.IP_V4.pattern())));
             }
         }
     }

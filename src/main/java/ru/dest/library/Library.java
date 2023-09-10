@@ -1,6 +1,7 @@
 package ru.dest.library;
 
 import org.bukkit.Bukkit;
+import org.bukkit.NamespacedKey;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.EventHandler;
@@ -17,6 +18,7 @@ import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -43,6 +45,7 @@ import ru.dest.library.utils.ChatUtils;
 import ru.dest.library.utils.ItemUtils;
 
 import java.io.File;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,6 +55,8 @@ public final class Library extends BukkitPlugin<Library> implements Listener {
     private static final List<BukkitPlugin<?>> plugins = new ArrayList<>();
 
     private static Library i;
+
+    private NamespacedKey itemId;
 
     private TaskManager tM;
     private TagUtils nmsTagUtils;
@@ -95,16 +100,30 @@ public final class Library extends BukkitPlugin<Library> implements Listener {
         i = this;
         tM = TaskManager.get();
 
-        String version = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
-
         try {
-            NMS nms = NMS.valueOf(version);
+            boolean hasMethod =false;
+            try {
+                ItemMeta.class.getMethod("getPersistentDataContainer");
+                hasMethod = true;
+            }catch (NoSuchMethodException e) {}
+
+            NMS nms;
+
+            if(hasMethod) {
+                nms = NMS.v1_16_R3;
+                logger.info("Detected server version 1.14+. Tag api activated");
+            } else {
+                String version = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
+                nms = NMS.valueOf(version);
+                logger.info("Detected server version " + version + ". Tag api activated");
+            }
             this.nmsTagUtils = nms.createTagUtils();
             this.skull = ItemUtils.createByMaterial(nms.getHeadMaterial());
-            logger.info("Detected server version " + version + ". Tag api activated");
         }catch (IllegalArgumentException e){
-            logger.warning("Detected server version " + version + " isn't supported. Tag api deactivated.");
+            logger.warning("Couldn't detect server version or server version isn't supported. Tag api deactivated.");
         }
+
+        this.itemId = new NamespacedKey(this, "itemid");
 
         this.noPermissionMessage = new Message(getConfig().getString("message.nopermission"));
         this.playerNotFoundMessage = new Message(getConfig().getString("message.playernotfound"));
@@ -112,8 +131,12 @@ public final class Library extends BukkitPlugin<Library> implements Listener {
         this.playernotonline = new Message(getConfig().getString("message.playernotonline"));
 
         if(getServer().getPluginManager().isPluginEnabled("TAB")){
-            logger.info("Found TAB plugin by NEZNAMY. Scoreboard support enabled");
-            this.scoreboardService = new TabScoreboard();
+            try {
+                this.scoreboardService = new TabScoreboard();
+                logger.info("Found TAB plugin by NEZNAMY. Scoreboard support enabled");
+            }catch (Exception e){
+                logger.warning("Found TAB plugin by NEZNAMY, but it doesn't have api, maybe old version? For Scoreboard support please update TAB plugin");
+            }
         }else {
             logger.warning("For Scoreboard support please install TAB plugin");
         }
@@ -178,6 +201,10 @@ public final class Library extends BukkitPlugin<Library> implements Listener {
 
     public ScoreboardService<?> getScoreboardService() {
         return scoreboardService;
+    }
+
+    public NamespacedKey getItemId() {
+        return itemId;
     }
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
