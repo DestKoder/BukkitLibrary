@@ -36,12 +36,12 @@ public abstract class GUI implements InventoryHolder {
 
 
     public GUI(int rows, String title, Player openFor) {
-        this.inventory = Bukkit.createInventory(this, rows*9, parse(title));
+        this.inventory = Bukkit.createInventory(this, rows*9, applyPlaceholders(parse(title), openFor));
         this.openFor = openFor;
     }
 
     public GUI(int rows, String title, Player openFor, ItemStack @NotNull [] items) {
-        this.inventory = Bukkit.createInventory(this, rows*9, parse(title));
+        this.inventory = Bukkit.createInventory(this, rows*9, applyPlaceholders(parse(title), openFor));
         this.openFor = openFor;
 
         if(items.length >= rows*9) {
@@ -62,13 +62,13 @@ public abstract class GUI implements InventoryHolder {
                 ItemMeta meta = i.getItemMeta();
 
                 meta.setDisplayName(ChatUtils.applyPlaceholders(meta.getDisplayName(), openFor));
-                List<String> nl = new ArrayList<>();
 
-                if(meta.getLore() != null) for(String s : meta.getLore()){
-                    nl.add(ChatUtils.applyPlaceholders(s, openFor));
+                if(meta.getLore() != null){
+                    List<String> nl = new ArrayList<>();
+                    for(String s : meta.getLore()) nl.add(ChatUtils.applyPlaceholders(s, openFor));
+                    meta.setLore(nl);
                 }
 
-                meta.setLore(nl);
                 i.setItemMeta(meta);
                 inventory.setItem(slot, i);
             });

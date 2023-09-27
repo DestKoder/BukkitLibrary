@@ -5,6 +5,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.inventory.ItemStack;
+import org.jetbrains.annotations.NotNull;
 import ru.dest.library.object.IItem;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public class ObjectListGUI<ItemObject extends IItem> extends GUI{
 
     protected int page, pages;
 
-    public ObjectListGUI(GUITemplate template, Player opener, List<ItemObject> items, BiConsumer<InventoryClickEvent, ItemObject> onItemClick) {
+    public ObjectListGUI(GUITemplate template, Player opener, @NotNull List<ItemObject> items, BiConsumer<InventoryClickEvent, ItemObject> onItemClick) {
         super(template, opener);
         this.items = items;
         this.emptySlots = getEmptySlots();

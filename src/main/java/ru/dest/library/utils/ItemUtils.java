@@ -60,11 +60,10 @@ public class ItemUtils {
     /**
      * Creates head with texture id;
      * @param textureId texture id from minecraft-heads.com
-     * @see {@link ItemUtils#setHeadTexture}
      * @return head item with provided texture or without it if any exception occupied
      */
     @Deprecated
-    public static ItemStack createHead(String textureId) {
+    public static @NotNull ItemStack createHead(String textureId) {
         ItemStack head = Library.getInstance().getSkullItem();
         assert head != null;
         return setHeadTexture(head, textureId);

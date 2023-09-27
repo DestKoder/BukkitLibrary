@@ -59,6 +59,7 @@ public class TaskManager {
      * @param plugin plugin which call task
      * @param async need to call this task async ?
      * @param repeatInTicks in how many tick must action execute
+     * @param repeatDelay repeat delay
      * @param r {@link BukkitRunnable} which will be called
      */
     public void callRepeating(String id, Plugin plugin, long repeatInTicks, long repeatDelay, boolean async, BukkitRunnable r){

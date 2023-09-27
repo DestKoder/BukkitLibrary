@@ -9,17 +9,18 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.event.block.Action;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
+import org.jetbrains.annotations.NotNull;
 
 public class PlayerItemInteractEvent extends Event implements Cancellable {
 
     private static final HandlerList handlers = new HandlerList();
 
-    private Player who;
-    private Action action;
-    private ItemStack item;
-    private Block clickedBlock;
-    private BlockFace clickedFace;
-    private EquipmentSlot hand;
+    private final Player who;
+    private final Action action;
+    private final ItemStack item;
+    private final Block clickedBlock;
+    private final BlockFace clickedFace;
+    private final EquipmentSlot hand;
 
     private boolean cancelled;
 
@@ -71,7 +72,7 @@ public class PlayerItemInteractEvent extends Event implements Cancellable {
     }
 
     @Override
-    public HandlerList getHandlers() {
+    public @NotNull HandlerList getHandlers() {
         return handlers;
     }
 }
