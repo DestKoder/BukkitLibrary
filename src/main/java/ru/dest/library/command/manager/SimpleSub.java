@@ -27,10 +27,10 @@ public class SimpleSub<T extends JavaPlugin> implements ICommand<T> {
 
     private final String name;
     private final T plugin;
-    private AbstractManagerCommand<T> root;
+    private ManagerCommand<T> root;
     private Method method;
 
-    public SimpleSub(T plugin, AbstractManagerCommand<T> root, String name, String usage, Method method) {
+    public SimpleSub(T plugin, ManagerCommand<T> root, String name, String usage, Method method) {
         this.name = name;
         this.root = root;
         this.usage = usage;

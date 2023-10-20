@@ -109,6 +109,6 @@ public abstract class AbstractCommand<T extends JavaPlugin> extends Command impl
     @Override
     @NotNull
     public List<String> getAliases() {
-        return super.getAliases() == null ? Collections.emptyList() : super.getAliases();
+        return Collections.unmodifiableList(super.getAliases());
     }
 }

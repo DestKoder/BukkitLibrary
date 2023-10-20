@@ -230,6 +230,7 @@ public final class Library extends BukkitPlugin<Library> implements Listener {
         PlayerLocationChangeEvent e = new PlayerLocationChangeEvent(event.getPlayer(), event.getFrom(), event.getTo());
 
         getServer().getPluginManager().callEvent(e);
+
         if(e.isCancelled()) event.setCancelled(true);
     }
 

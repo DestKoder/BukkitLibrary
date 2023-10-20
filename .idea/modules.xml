@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/DestBukkitLibrary.iml" filepath="$PROJECT_DIR$/DestBukkitLibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BukkitLibrary.iml" filepath="$PROJECT_DIR$/BukkitLibrary.iml" />
     </modules>
   </component>
 </project>

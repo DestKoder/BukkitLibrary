@@ -4,6 +4,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 import ru.dest.library.command.CommandData;
+import ru.dest.library.command.ICommand;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;
@@ -28,8 +29,14 @@ public abstract class AbstractManagerCommand<T extends JavaPlugin> extends BaseM
         this.registerCommands();
     }
 
+    @Override
+    public final void perform(CommandSender sender, CommandData data, String @NotNull [] args) {
+        super.perform(sender, data, args);
+    }
+
     private void registerCommands(){
         for(Method method : getClass().getDeclaredMethods()){
+            if(method.getName().equalsIgnoreCase("__default")) continue;
             if(!Arrays.equals(method.getParameterTypes(), parameterTypes)) continue;
             addSubCommand(new SimpleSub<>(plugin, this, method.getName(), "/"+getName()+" help", method));
         }

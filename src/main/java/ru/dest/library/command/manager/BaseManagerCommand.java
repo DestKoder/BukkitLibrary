@@ -17,7 +17,7 @@ import java.util.Objects;
 
 public class BaseManagerCommand<T extends JavaPlugin> extends AbstractCommand<T> implements ManagerCommand<T> {
 
-    private final List<ICommand<T>> subCommands = new ArrayList<>();
+    protected final List<ICommand<T>> subCommands = new ArrayList<>();
     public BaseManagerCommand(T plugin, String name, String usage) {
         super(plugin, name, usage);
     }
@@ -34,8 +34,6 @@ public class BaseManagerCommand<T extends JavaPlugin> extends AbstractCommand<T>
     @Override
     public List<String> tabComplete(@NotNull CommandSender sender, @NotNull String alias, @NotNull String @NotNull [] args) throws IllegalArgumentException {
         List<String> toReturn = new ArrayList<>();
-        System.out.println(args.length);
-        System.out.println(Arrays.toString(args));
         if(args.length == 1){
             for(ICommand<T> cmd : subCommands){
                 toReturn.addAll(cmd.getAliases());
@@ -74,7 +72,7 @@ public class BaseManagerCommand<T extends JavaPlugin> extends AbstractCommand<T>
     }
 
     @Override
-    public final void perform(CommandSender sender, CommandData data, String @NotNull [] args) {
+    public void perform(CommandSender sender, CommandData data, String @NotNull [] args) {
         if(args.length < 1){
             data.getSender().sendMessage(this.usageMessage);
             return;

@@ -42,4 +42,8 @@ public class PlayerLocationChangeEvent extends PlayerEvent implements Cancellabl
     public void setCancelled(boolean cancelled) {
         this.cancelled = cancelled;
     }
+
+    public static HandlerList getHandlerList(){
+        return list;
+    }
 }
