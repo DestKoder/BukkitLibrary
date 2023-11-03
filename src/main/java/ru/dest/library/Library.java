@@ -7,6 +7,7 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityShootBowEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -45,7 +46,6 @@ import ru.dest.library.utils.ChatUtils;
 import ru.dest.library.utils.ItemUtils;
 
 import java.io.File;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -232,6 +232,20 @@ public final class Library extends BukkitPlugin<Library> implements Listener {
         getServer().getPluginManager().callEvent(e);
 
         if(e.isCancelled()) event.setCancelled(true);
+    }
+
+    @EventHandler
+    public void bb(@NotNull BlockBreakEvent event){
+        ItemStack item = event.getPlayer().getEquipment().getItemInMainHand();
+
+        if(item.getType().name().contains("AIR")) return;
+
+        CustomItem i = ItemRegistry.get().getItem(item);
+        if(i == null) return;
+
+        if(i instanceof ITool){
+            ( (ITool) i ).onBlockBreak(event);
+        }
     }
 
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
