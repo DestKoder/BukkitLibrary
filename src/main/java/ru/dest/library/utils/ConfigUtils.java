@@ -95,9 +95,13 @@ public class ConfigUtils {
             ItemUtils.setHeadTexture(item, section.getString("texture"));
         }
 
-        if(section.isSet("amount")) item.setAmount(section.getInt("amount"));
+//        if(section.isSet("amount")) item.setAmount(section.getInt("amount"));
         if(section.isSet("enchantments") && section.isConfigurationSection("enchantments")) {
             ItemUtils.applyEnchantments(item, section.getConfigurationSection("enchantments"));
+        }
+
+        if(section.isSet("tags") && section.isConfigurationSection("tags")){
+
         }
 
         return item;
